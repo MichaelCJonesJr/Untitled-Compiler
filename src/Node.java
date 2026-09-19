@@ -23,11 +23,15 @@ public class Node {
         Object result = null;
         if(!(lchild != null && rchild != null))
         {
-            return Integer.valueOf((String)value);
+            try {
+                //System.out.println(Integer.valueOf((String)value) + " value");
+                return Integer.valueOf((String)value + "");
+            } catch (NumberFormatException e) {
+            
+            }
         }
         int l = Integer.parseInt(lchild.evaluate() + "");
         int r = Integer.parseInt(rchild.evaluate() + "");
-        System.out.print("lol");
         switch ((String)value) {
             case "+" -> result = l + r;
             case "-" -> result = l - r;
@@ -35,6 +39,7 @@ public class Node {
             case "/" -> result = l / r;
             default -> System.out.println("\nevaulation tree compiler error:" + value);
         }
+        System.out.println("operator: " + value + " left: " + l + " right: " + r);
         return result;
     }
 

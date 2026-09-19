@@ -1,7 +1,6 @@
 public class ExpressionTree {
     private Node root;
-    private int priority;
-
+    
     public ExpressionTree(Node root)
     {
         this.root = root;
