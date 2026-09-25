@@ -48,8 +48,8 @@ public class Stack<T> {
 
     public String toString() {
         StringBuilder str = new StringBuilder("");
-        for (T item : stack) {
-            str.append(item).append("  ");
+        for (int i = 0; i < size; i++) {
+            str.append(stack[i]).append(",");
         }
         return str.toString();
     }

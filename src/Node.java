@@ -2,16 +2,16 @@ public class Node {
     private Node lchild;
     private Node rchild;
     private Node parent;
-    private Object value;
+    private String value;
 
-    public Node(Object value, Node parent, Node lchild, Node rchild) {
+    public Node(String value, Node parent, Node lchild, Node rchild) {
         this.value = value;
         this.parent = parent;
         this.lchild = lchild;
         this.rchild = rchild;
     }
 
-    public Node(Object value) {
+    public Node(String value) {
         this.value = value;
         this.parent = null;
         this.lchild = null;
@@ -19,29 +19,26 @@ public class Node {
     }
 
     // this is done so improperly its kind of crazy
-    public Object evaluate() {
-        Object result = null;
+    public String evaluate() { 
+        String result = null;
         if(!(lchild != null && rchild != null))
         {
-            try {
-                //System.out.println(Integer.valueOf((String)value) + " value");
-                return Integer.valueOf((String)value + "");
-            } catch (NumberFormatException e) {
-            
-            }
+                return value;
         }
-        int l = Integer.parseInt(lchild.evaluate() + "");
-        int r = Integer.parseInt(rchild.evaluate() + "");
+
+        int l = Integer.parseInt(lchild.evaluate().trim());
+        int r = Integer.parseInt(rchild.evaluate().trim());
+
         switch ((String)value) {
-            case "+" -> result = l + r;
-            case "-" -> result = l - r;
-            case "x" -> result = l * r;
-            case "/" -> result = l / r;
+            case "+" -> result = l + r + "";
+            case "-" -> result = l - r + "";
+            case "*" -> result = l * r + "";
+            case "/" -> result = l / r + "";
+            case "=" -> result = l + " = " + r;
             default -> System.out.println("\nevaulation tree compiler error:" + value);
         }
-        System.out.println("operator: " + value + " left: " + l + " right: " + r);
-        return result;
-    }
+        return result; 
+    }  
 
     public Node getLchild() {
         return lchild;
@@ -69,11 +66,11 @@ public class Node {
         this.parent = parent;
     }
 
-    public Object getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

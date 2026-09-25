@@ -12,6 +12,7 @@ public class ExpressionTree {
     }
     
     public void printInOrder() {
+        System.out.print("InOrder: ");
         printInOrder(root);
     }
     private void printInOrder(Node node) {
@@ -28,6 +29,7 @@ public class ExpressionTree {
     }
     
     public void printPostOrder() {
+        System.out.println("PostOrder: ");
         printPostOrder(root);
     }
     private void printPostOrder(Node node) {
@@ -39,6 +41,7 @@ public class ExpressionTree {
     }
 
     public void printPreOrder() {
+        System.out.println("PreOrder: ");
         printPreOrder(root);
     }
     private void printPreOrder(Node node) {
